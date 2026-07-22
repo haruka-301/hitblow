@@ -7,13 +7,17 @@
 """
 
 from .core import judge, make_secret
-
+from .cat import show_comment, show_clear_cat, reset_comments
 
 def play(digits=3):
+    reset_comments()
     secret = make_secret(digits)
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
+    from .timer import start_timer
+
+    start = start_timer()
 
     tries = 0
     while True:
@@ -30,9 +34,19 @@ def play(digits=3):
         tries += 1
         hit, blow = judge(secret, guess)
         print(f"  Hit={hit}  Blow={blow}")
+        # ガヤを入れる
+
         if hit == digits:
+            show_clear_cat()
 
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
+            from .timer import elapsed_time
+
+            t = elapsed_time(start)
+            print(f"クリアタイム：{t:.2f}秒")
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
             break
+
+        else:
+            show_comment(hit, blow, digits)
