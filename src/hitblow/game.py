@@ -18,6 +18,8 @@ def play(digits=3):
     from .timer import start_timer
 
     start = start_timer()
+    from .timer import start
+    started_at = start()
 
     tries = 0
     while True:
@@ -41,6 +43,8 @@ def play(digits=3):
 
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
 
+            t = elapsed_time(start)
+            print(f"クリアタイム：{t:.2f}秒")
             from .timer import elapsed_since
             elapsed = elapsed_since(started_at)
             print(f"クリア時間：{elapsed:.1f} 秒")
