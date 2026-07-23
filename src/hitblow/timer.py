@@ -5,6 +5,7 @@ def start_timer():
 
 def elapsed_time(start):
     return time.time() - start
+    return time.time() - start
 
 def start():
     return time.perf_counter()
