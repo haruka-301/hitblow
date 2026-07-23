@@ -1,5 +1,10 @@
 import time
 
+def start_timer():
+    return time.time()
+
+def elapsed_time(start):
+    return time.time() - start
 
 def start():
     return time.perf_counter()
