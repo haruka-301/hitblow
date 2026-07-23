@@ -18,6 +18,8 @@ def play(digits=3):
     from .timer import start_timer
 
     start = start_timer()
+    from .timer import start
+    started_at = start()
 
     tries = 0
     while True:
@@ -44,6 +46,9 @@ def play(digits=3):
 
             t = elapsed_time(start)
             print(f"クリアタイム：{t:.2f}秒")
+            from .timer import elapsed_since
+            elapsed = elapsed_since(started_at)
+            print(f"クリア時間：{elapsed:.1f} 秒")
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
             break
