@@ -10,7 +10,12 @@ from .core import judge, make_secret
 from .cat import show_comment, show_clear_cat, reset_comments
 
 def play(digits=3):
+    from .difficulty import select_digits
+    digits = select_digits()  # 難易度入力
+
+
     reset_comments()
+
     secret = make_secret(digits)
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
@@ -39,6 +44,7 @@ def play(digits=3):
         # ガヤを入れる
 
         if hit == digits:
+
             show_clear_cat()
 
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
@@ -47,6 +53,7 @@ def play(digits=3):
             t = elapsed_time(start)
             print(f"クリアタイム：{t:.2f}秒")
             from .timer import elapsed_since
+
             elapsed = elapsed_since(started_at)
             print(f"クリア時間：{elapsed:.1f} 秒")
 
