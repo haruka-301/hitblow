@@ -20,9 +20,7 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
-    from .timer import start_timer
 
-    start = start_timer()
     from .timer import start
     started_at = start()
 
@@ -49,10 +47,7 @@ def play(digits=3):
 
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
 
-            t = elapsed_time(start)
-            print(f"クリアタイム：{t:.2f}秒")
             from .timer import elapsed_since
-
             elapsed = elapsed_since(started_at)
             print(f"クリア時間：{elapsed:.1f} 秒")
 
